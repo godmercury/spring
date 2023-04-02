@@ -1,0 +1,34 @@
+CORS (Cross-Origin Resource Sharing)
+다른 출처(Cross-Origin) 서버에 있는 이미지나 유튜브 영상 같은 리소스는 상호작용이 불가능하다.
+출처 비교와 차단은 브라우저가 한다.
+브라우저의 CORS 기본 동작
+1. 클라이언트에서 HTTP 요청의 헤더에 Origin을 담아 전달
+2. 서버는 응답헤더에 Access-Control-Allow-Origin을 담아 클라이언트로 전달
+3. 클라이언트에서 Origin과 서버가 보내준 Access-Control-Allow-Origin 비교
+4. 응답을 받은 브라우저는 자신이 보냈던 요청의 Origin과 서버가 보내준 응답의 Access-Control-Allow-Origin을 비교해본 후 차단할지 말지를 결정 (유효하지 않다면 CORS 오류)
+
+
+SOP (Same-Origin Policy)
+동일 출처 정책. 동일한 출처에서만 리소스를 공유할 수 있다
+출처가 다른 두 어플리케이션이 자유로이 소통할 수 있는 환경은 꽤 위험한 환경이다.
+만일 제약이 없다면, 해커가 CSRF(Cross-Site Request Forgery)나 XSS(Cross-Site Scripting) 등의 방법을 이용해서 우리가 만든 어플리케이션에서 해커가 심어놓은 코드가 실행하여 개인 정보를 가로챌 수 있다.
+
+
+Origin(출처)
+Protocol + Host + Port
+
+
+해결 방법
+1. Chrome 확장 프로그램 이용
+    'Allow CORS: Access-Control-Allow-Origin' 크롬 확장 프로그램을을 설치 해주면 로컬(localhost) 환경에서 API를 테스트 시, CORS 문제를 해결할 수 있다.
+2. 프록시 사이트 이용하기
+   다만 현재 무료 프록시 서버 대여 서비스들은 모두 악용 사례 때문에 api 요청 횟수 제한을 두어 실전에서는 사용하기 무리이다. 
+   따라서 테스트용이나 맛보기용으로 사용하되, 실전에서는 직접 프록시 서버를 구축하여 사용하여야 한다.
+3. 서버에서 Access-Control-Allow-Origin 헤더 세팅하기
+   직접 서버에서 HTTP 헤더 설정을 통해 출처를 허용하게 설정하는 가장 정석적인 해결책이다.
+
+
+
+
+참조 URL
+https://inpa.tistory.com/entry/WEB-%F0%9F%93%9A-CORS-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95-%F0%9F%91%8F#cors%EB%A5%BC_%ED%95%B4%EA%B2%B0%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95_%EC%B4%9D%EC%A0%95%EB%A6%AC_%F0%9F%99%8C

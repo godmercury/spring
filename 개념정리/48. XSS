@@ -1,0 +1,19 @@
+XSS (Cross Site Scripting)
+공격자가 상대방의 브라우저에 스크립트가 실행되도록 해 사용자의 세션을 가로채거나, 웹사이트를 변조하거나, 악의적 콘텐츠를 삽입하거나, 피싱 공격을 진행하는 것을 말한다.
+XSS 공격은 스크립트 언어와 취약한 코드를 공격 대상으로 한다.
+
+방지 대책
+1) 쿠키에 중요한 정보를 담지 않고 서버에 중요한 정보를 저장한다.
+2) 정보를 암호화한다
+3) httponly 속성 on
+4) 보안 코딩
+ 
+
+XSS 방지 필터
+spring boot fiilter
+
+
+참조 URL
+https://crazykim2.tistory.com/694
+https://riverblue.tistory.com/m/46
+https://www.leafcats.com/52

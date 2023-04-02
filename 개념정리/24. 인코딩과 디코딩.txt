@@ -1,0 +1,9 @@
+인코딩
+- 정보의 형태나 형식을 변환하는 처리나 처리 방식. 즉 컴퓨터가 이해할 수 있는 형식으로 바꾸어 주는것을 뜻한다.
+- 문자열 인코딩 : URLEncoder.encode(문자, 변환타입);
+- Base64 인코딩 : Base64.getEncoder().encodeToString(문자);
+
+디코딩
+- 암호화된 데이터를 원래의 문자나 기호로 바꾸어 주는 방식.
+- 문자열 디코딩 : URLDecoder.decode(문자, 변환타입);
+- Base64 디코딩 : Base64.getDecoder().decode(문자);

@@ -1,0 +1,88 @@
+Java SE(Standard Edition) : 자바 기본 라이브러리 API 제공
+Java EE(Enterprise Edition) : 기업용 엔터프라이즈
+Java Me(Micro Edition) : 임베디드용
+
+JRE(Java Runtime Environment) : 자바 실행 환경
+JDK(Java Development Kit) : 자바 개발 키트
+
+
+
+자바설치
+1. 오라클 홈페이지 Java SE 다운로드 페이지 찾아서 들어가기
+2. Compressed Archive 다운로드
+3. 자바를 설치할 폴더(자바홈)에 압축 풀기
+4. 환경변수만들기
+   JAVA_HOME - 자바홈
+   CLASSPATH - %JAVA_HOME%\bin;.
+   path 추가 - %JAVA_HOME%\bin
+
+
+
+
+
+한글 설정
+https://hyunipad.tistory.com/57 참조
+
+
+
+
+
+
+
+
+
+
+
+web.xml에서 cvc-id.3: Afield of identity constraint 'web.app-servlet-name-uniqueness' matched element 'web-app', but this element does not have a simple type.
+위 에러 발생시
+
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+web-app 태그의 xsi:schemaLocation 의 java를 Java 대문자로 변경하면 해결된다.
+
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://Java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+
+
+
+An error has occurred. See error log for more details.
+java.lang.ExceptionInInitializerError
+
+https://sseyeon.tistory.com/18 이 페이지 참조
+
+
+
+
+
+
+스프링-톰캣 연동
+https://life-with-coding.tistory.com/371
+https://hgserver.tistory.com/19
+
+
+
+
+
+
+
+ORACLE XE 설치
+
+
+
+
+DB 연결
+oracle
+
+mariadb
+ 1. pom.xml 라이브러리 추가하기
+     => 추가해야할 코드는 MVN Repository( https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client )에서 확인
+
+
+
+
+
+게시판만들기
+https://hyunipad.tistory.com/57 참조

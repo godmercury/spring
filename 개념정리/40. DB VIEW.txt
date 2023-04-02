@@ -1,0 +1,41 @@
+VIEW
+하나 또는 그 이상의 테이블을 조인하여 만든 새로운 가상 테이블을 의미한다
+실제로 테이블을 생성한 건 아니지만, 사용자에게는 실존 테이블과 동일하게 사용된다
+주로 특정 정보만 제공하고 싶은 경우나 복잡한 쿼리를 가상 테이블로 만들어 간편하게 활용할 수 있어 업무에서도 자주 이용하는 기능이다
+뷰를 조회하는 방법은 일반적으로 테이블을 SELECT 하는 것과 동일하다.
+
+
+생성 방법
+CREATE VIEW viewTableEx1 AS
+  SELECT CustomerID, OrderID, Quantity
+  FROM Orders
+  WHERE ProductID = "P1"
+;
+-- 생성할 뷰 명칭은 viewTableEx1
+
+CREATE VIEW viewTableEx2 AS
+ SELECT Customer.CustomerName, Orders.Quantity
+  FROM Customer JOIN Orders
+    ON Customer.CustomerID = Orders.CustomerID
+;
+-- 생성할 뷰 명칭은 viewTableEx2
+
+
+삭제 방법
+DROP VIEW viewTableEx2 
+;
+-- 뷰 viewTableEx2 삭제
+
+
+장점
+-  논리적 데이터 독립성을 제공한다
+- 데이터 조회가 용이하다 (복잡한 쿼리를 단순화)
+- 사용자 별 필요한 정보만 제공할 수 있다 (보안 이점)
+- 물리적인 공간이 필요하지 않다
+
+
+단점
+- 뷰에 인덱스를 구성할 수 없다
+- 뷰를 포함하여 뷰를 만든 경우 연관 뷰를 삭제하면 생성된 뷰도 삭제된다
+- 한번 정의된 뷰는 수정이 불가하다
+- 뷰로 구성된 내용에 대한 삽입, 삭제, 갱신, 연산에 제약이 따른다

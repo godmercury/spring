@@ -1,0 +1,109 @@
+Servlet
+ - 파일형식 : .java
+ - 설명 : 자바에서 작성하는 HTML 코드
+ - 방법 : out.println()
+
+JSP
+ - 파일형식 : .jsp
+ - 설명 : HTML에 넣는 자바 코드. 스크립틀릿(<% ~ %>)을 통해 html 파일 내부에 자바 코드를 삽입
+ - 방법 : <% ~ %>
+
+JSP가 실행되는 원리
+1. 특정 유저가 xxx.yyy.com/index 로 요청을 보냄
+2. JSP 컨테이너가 Controller가 지정한 파일(index.jsp)을 찾아서 읽음
+3. index.jsp 파일 내부에 조건문이나 변수들을 사용했다면 이를 우선적으로 계산하거나 할당하여 다시 하나의 파일을 생성하고 이를 바탕으로 서블릿 파일 생성
+4. 3에서 생성된 서블릿 파일을 컴파일한 뒤 실행
+
+
+EL (Expression language)
+- Expression language로 JSP 2.0부터 추가된 개념
+- 자바빈의 속성값을 보다 쉽게 꺼내 쓸 수 있는 도구
+- 종류
+   1) ${} : JSP가 실행될 때 즉시 반영(Immediate evaluation)되고, 객체 프로퍼티 값을 꺼낼 때 주로 사룡
+   2) ${변수명}으로 선언하여 다양한 연산자를 사용할 수 있는 도구
+        ${fn:} 등을 통해 함수 사용 가능
+	HTML에서 프론트단 노출 용도 ex. <span>${prod.brndNm}</span>
+	Javascript에서 사용할 경우 더블쿼터(")를 사용한다.  ex. "${prod.brndNm}"
+- 이점
+  1) 객체 할당과 같은 과정 없이, 바로 ${student.name} 만 작성하여 사용이 가능함
+  2) <%%> 객체 할당 과정이나, <%= 변수명 %>과 같은 과정을 하나로 압축 할 수 있다.
+  ps. 원래의 경우 리퀘스트와 세션안에 있는 데이터를 받아오기 위해, <% 스크립틀릿 %>안에서 받아오는 처리를 수행해야 한다. 
+       즉, EL이 없으면 <% 스크립틀릿 %>으로 값을 가져오고, 할당하고 하는 등의 과정이 필요함
+- 내장객체
+  1) ${pageScope} : page Scope에 접근하기 위한 객체
+  2) ${reqeustScope} : request Scope에 접근하기 위한 객체
+  3) ${sessionScope} : session Scope에 접근하기 위한 객체
+  4) ${applicationScope} : application Scope에 접근하기 위한 객체
+  5) ${param} : 파라미터 값을 가져오기 위한 객체
+  6) ${header} : 헤더 값을 가져오기 위한 객체
+  7) ${cookie} : 쿠키 값을 가져오기 위한 객체
+  8) ${initParam} : JSP 초기 파라미터를 가져오기 위한 객체
+  9) ${pageContext} : pageContext 객체에 접근하기 위한 객체
+
+
+JSTL (Jsp Standard Tag Library)
+- JSTL + EL의 조합을 의미한다.
+- HTML내의 스크립틀릿을 편하게 변환해 준다.
+- JSTL은 JSP페이지 내에서 java코드를 사용하지 않고 로직을 내장하는 방법을 제공한다.
+- 사용법 : core를 header에 추가한 후 필요한 태그를 사용한다.
+   <% @taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+
+   <c:set>		변수명에 값을 할당
+   <c:out>		값을 출력
+   <c:if>		조건식에 해당하는 블럭과 사용될 scope 설정
+   <c:choose>	switch 와 비슷
+   <c:when>	switch문의 case에 해당
+   <c:otherwise>	switch문의 default에 해당
+   <c:forEach>	다른언어의 loop문 items 속성에 배열을 할당할 수 있음
+
+
+스크립틀릿 vs JSTL
+- 스크립틀릿
+	<html>
+	<body>
+		<%
+			for (int i = 1; i <= 10; i ++) {
+		%>
+				<%= i %><br/>
+		<%
+			}
+		%>
+		<%= request.getAttribute("person").getAddress().getCity() %>
+	</body>
+	</html>
+- JSTL + EL을 사용한 방법
+	<% @taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+	<html>
+	<body>
+		<c:forEach var="i" begin="1" end="10" step="1">
+			<c:out value="${i}"/>
+			<br/>
+		</c:forEach>
+		${person.address.city}
+		</body>
+	</html>
+
+
+알아두면 좋은 JSTL 표현들
+- javascript에서 model parameter를 가져오는 방법
+   var key = '<c:out value='${key}' />';
+- javascript에서 context path를 가져오는 방법
+   var G_CONTEXT_PATH = "${pageContext.request.contextPath}";
+- jsp에서 url의 get parameter 가져오는 방법
+   <c:if test="${param.loginFail eq 'true'}">
+      <div class="login-fail">아이디 혹은 비밀번호가 일치하지 않습니다.</div>
+   </c:if>
+- jsp에서 현재 년도 구하기
+   <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+   <jsp:useBean id="now" class="java.util.Date" />
+   <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
+   <p>Current year: ${year}</p>
+   <p>Previous year: ${year - 1}</p>
+
+
+
+
+JSP : HTML안에 스크립틀릿으로 Java 코드를 넣은 파일
+EL : JSP에서 객체의 값을 쉽게 뽑아주는 기능
+JSTL : JSP에서 자주 사용하는 스크립틀릿을 하나의 태그로 묶은 라이브러리
+Servlet : 자바가 실행할 수 있는 웹 코드(.java)
