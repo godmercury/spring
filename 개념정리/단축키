@@ -1,0 +1,34 @@
+이클립스 단축키
+import : Ctrl + Shirt + O 
+한줄이동 : Alt + 위아래 방향키
+한줄복사 : Ctrl + Alt + 위아래 방향키
+한줄삭제 : Ctrl + d
+소스정리 : Ctrl + Shift + f
+대문자변환 : Ctrl + Shift + x 
+소문자변환 : Ctrl + Shift + y 
+범위 주석 : ctrl + shift + /
+범위 주석 해제 : ctrl + shift + \
+메서드나 필드가 참조하고 있는 곳으로 이동 : ctrl + shift + g
+내여쓰기 : shift + tab
+
+getter, setter 자동 생성 : alt + shift + s + r
+default 생성자 자동 생성 : alt + shift + s + c
+bulid 생성자 자동 생성 : alt + shift + s + o
+디버깅 : F11
+디버깅 및 실행 : ctrl + F11
+
+ctrl + y : 복구하기
+
+
+IntelliJ
+ctrl + alt + v : 리턴타입 자동 생성
+shift + f6 : 단어 멀티 커서
+shift + alt + 단어클릭 : 단어 멀티 커서
+ctrl + alt + m : 선택한 소스를 새로운 함수로 생성
+ctrl + shipt + t : 테스트 클래스 작성
+alert + insert : 함수들 항목 나옴
+alert + enter : 오류날 때 처리 방법
+
+ctrl + ctrl : 멀티커서
+ctrl + d : 라인복사
+ctrl + shift + 위아래방항키 : 한줄 이동
