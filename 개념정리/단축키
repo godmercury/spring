@@ -10,6 +10,7 @@ import : Ctrl + Shirt + O
 범위 주석 해제 : ctrl + shift + \
 메서드나 필드가 참조하고 있는 곳으로 이동 : ctrl + shift + g
 내여쓰기 : shift + tab
+괄호와 대응되는 괄호 찾기 Ctrl + Shift + p
 
 getter, setter 자동 생성 : alt + shift + s + r
 default 생성자 자동 생성 : alt + shift + s + c
