@@ -1,0 +1,89 @@
+
+4.	어노테이션 정리
+A.	기본
+i.	컨트롤러 : @Controller (프레젠테이션 레이어, 웹 요청과 응답을 처리함)
+ii.	로직 처리 : @Service (서비스 레이어, 내부에서 자바 로직을 처리함)
+iii.	외부I/O 처리 : @Repository (퍼시스턴스 레이어, DB나 파일같은 외부 I/O 작업을 처리함)
+B.	Controller
+i.	@Controller
+	프레젠테이션 레이어, 웹 요청과 응답을 처리함
+ii.	@Autowired
+iii.	@Inject
+iv.	@Resource
+v.	@ModelAttribute
+	빈 클래스 객체를 자동 생성
+	http로 넘어온 값들을 setter를 통해 해당 멤버 변수로 바인딩
+	자동으로 Model 객체에 추가되어 jsp 단에서 사용 가능
+	생략이 가능하지만 비추.
+	참조 URL : https://developer-joe.tistory.com/197
+vi.	@RequestParam
+	HTTP request parameter를 받을 때 사용. 생략 가능하지만 비추
+vii.	@RequestValue
+	HTTP request parameter를 받을 때 사용 (단일 파라미터)
+C.	VO
+i.	@AllArgsConstructor 
+	모든 필드 값을 파라미터로 받는 생성자를 생성한다.
+ii.	@NoArgsConstructor
+	파라미터가 없는 기본 생성자를 생성한다.
+iii.	@RequiredArgsConstructor
+	final이나 @NonNull인 필드값만 파라미터로 받는 생성자를 생성한다.
+iv.	@EqualsAndHashCode
+	equals, hashCode 자동 생성
+v.	@ToString
+	toString 자동 생성
+vi.	@Data
+	@Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode를 한번에 설정해준다.
+vii.	@Builder :
+	빌더를 사용할 때 자동 생성한다.
+	객체를 생성할 수 있는 빌더를 builder() 함수를 통해 얻고 거기에 셋팅하고자 하는 값을 셋팅하고 마지막에 build()를 통해 빌더를 작동 시켜 객체를 생성한다
+	참조URL : https://pamyferret.tistory.com/67
+D.	DAO
+i.	@Repository
+E.	Else
+i.	@SuppressWarnings
+	경고 제외
+	종류
+A.	all : 모든 경고  
+B.	cast : 캐스트 연산자 관련 경고
+C.	dep-ann : 사용하지 말아야 할 주석 관련 경고
+D.	deprecation : 사용하지 말아야 할 메서드 관련 경고
+E.	fallthrough : switch문에서 break 누락 관련 경고
+F.	finally : 반환하지 않는 finally 블럭 관련 경고
+G.	null : null 분석 관련 경고
+H.	rawtypes : 제너릭을 사용하는 클래스 매개 변수가 불특정일 때의 경고
+I.	unchecked : 검증되지 않은 연산자 관련 경고
+J.	unused : 사용하지 않는 코드 관련 경고
+
+5.	환경설정
+A.	component-scan
+i.	빈으로 등록 될 준비를 마친 클래스들을 스캔하여, 빈으로 등록해주는 것
+ii.	@Controller, @Service, @Component, @Repository 어노테이션을 붙인 클래스들이 빈으로 등록 될 준비를 하는 것이다.
+
+6.	개념정리
+A.	Interceptor
+i.	컨트롤러에 들어오는 요청 HttpRequest와 컨트롤러가 응답하는 HttpResponse를 가로채는 역할
+ii.	주로 권한 체크 용도로 사용
+iii.	참조 URL : https://popo015.tistory.com/115
+B.	Resoulver
+i.	HandlerMethodArgumentResolver는 Interface로써, Controller의 Argument(Parameter)에 지정된 변수들을 Annotation이나 객체의 Type에 따라서 Resolver를 먼저 거쳐, 실제 Data를 Controller에 넘겨주는 역할을 수행한다
+ii.	매개변수로 사용되는 인자에 대해 공통적으로 처리해야할 로직 등이 있을 경우, 중복 코드를 줄이고 공통 기능으로 추출하여 사용할 수 있다.
+iii.	동작 원리
+	Client Request 요청
+	Dispatcher Servlet에서 해당 요청 처리
+	Client Request에 대한 Handler Mapping
+3.1 RequestMapping에 대한 매칭 (RequestMappingHandlerAdapter가 수행)
+3.2 Interceptor 처리
+3.3 Argument Resolver 처리 <-- Argument Resolver 실행 지점
+3.4 Message Converter 처리
+
+
+
+내가 나중에 참조할거…..
+		Field[] fields =  FacilityDTO.class.getDeclaredFields();
+		for (Field field : fields) {
+			logger.info(" >>>>>>>>>>>>>>> " + field);
+		}
+
+
+글로별 변수 설정 살펴보기
+파일업로드 방식 살펴보기
