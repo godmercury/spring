@@ -6,6 +6,7 @@ import : Ctrl + Shirt + O
 소스정리 : Ctrl + Shift + f
 대문자변환 : Ctrl + Shift + x 
 소문자변환 : Ctrl + Shift + y 
+한줄 주석 : //
 범위 주석 : ctrl + shift + /
 범위 주석 해제 : ctrl + shift + \
 메서드나 필드가 참조하고 있는 곳으로 이동 : ctrl + shift + g
